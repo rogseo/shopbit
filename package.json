@@ -4,8 +4,8 @@
   "description": "Next.js e-commerce website",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
-    "develop": "concurrently \"cd server && node server\" \"cd shopbit && next start\"",
+    "start": "cd server && npm start",
+    "develop": "concurrently \"cd server && npm start\" \"cd shopbit && next start\"",
     "install": "cd server && npm i && cd ../shopbit && npm i",
     "build": "cd shopbit && next build",
     "test": "echo \"Error: no test specified\" && exit 1"
