@@ -25,13 +25,13 @@ const Navbar = () => {
                         </div>
                     </li>
                     <li  className="m-3 self-center">
-                        <Link className="flex flex-row mr-3" href="/categories"><Grid/>Categories</Link>
+                        <Link className="flex flex-row mr-3" href="/categories"><Grid className="mr-1"/>Categories</Link>
                     </li>
                     <li className="m-3 self-center">
-                        <Link className="flex flex-row mr-3" href="/account"><User/>Account</Link>
+                        <Link className="flex flex-row mr-3" href="/account"><User className="mr-1"/>Account</Link>
                     </li>
                     <li className="m-3 self-center">
-                        <Link className="flex flex-row mr-3" href="/cart"><ShoppingCart/>Cart</Link>
+                        <Link className="flex flex-row mr-3" href="/cart"><ShoppingCart className="mr-1"/>Cart</Link>
                     </li>
                 </ul>
 
