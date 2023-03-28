@@ -8,7 +8,7 @@ const HomePage: MyPage = () => {
       <div className="grid place-content-center min-h-screen">
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-4xl my-8">
-            Welcome to NextJS Multiple Layouts Tutorial
+            Shopbit
           </h1>
         </div>
       </div>
