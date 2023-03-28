@@ -1,7 +1,8 @@
-const swell = require('../config/connection');
+const { AuthenticationError } = require('apollo-server-express');
 
-const resolvers = {
-
+const typeDefs = {
+  Query: {
+  }
 }
 
-module.exports = resolvers;
+module.exports = typeDefs;
