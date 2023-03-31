@@ -6,7 +6,7 @@ import { User, ShoppingCart, Grid, Tag } from 'react-feather';
 const Navbar = () => {
     return (
         <div className='container navbar bg-base-100 mx-auto'>
-            <ul className='grid grid-cols-8 gap-4 my-3 place-content-between place-items-center'>
+            <ul className='grid grid-cols-9 gap-4 my-3 place-content-between place-items-center'>
                 <li className='self-center items-center'>
                     <Link href='/' className='flex flex-row'>
                         <h1 className='text-2xl self-end'>ShopBit</h1>
@@ -45,6 +45,11 @@ const Navbar = () => {
                     <Link className='flex flex-row' href='/cart'>
                         <ShoppingCart className='mr-1' />
                         Cart
+                    </Link>
+                </li>
+                <li className='self-center'>
+                    <Link className='flex flex-row' href='/login'>
+                        Log in
                     </Link>
                 </li>
             </ul>
