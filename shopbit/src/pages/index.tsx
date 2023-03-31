@@ -3,8 +3,9 @@ import { MyPage } from "../../components/common/types";
 const HomePage: MyPage = () => {
   return (
     <>
-    
-    <div className="container">
+    <link rel="icon" href="../../../assets/favicon.ico" />
+    <div className="container mx-auto">
+        <img src='/hero.jpg' className='rounded-lg'/>
       <div className="grid place-content-center min-h-screen">
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-4xl my-8">
