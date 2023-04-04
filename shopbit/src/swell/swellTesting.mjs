@@ -1,3 +1,5 @@
+// This file is an example. It will be deleted later.
+
 import { GraphQLClient, gql } from 'graphql-request';
 import * as dotenv from 'dotenv';
 dotenv.config();
