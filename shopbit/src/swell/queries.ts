@@ -14,7 +14,7 @@ export const checkTokenValidity = gql`
 // https://developers.swell.is/frontend-api/products
 export const getAllProducts = gql`
     query getAllProducts {
-        products(limit: 25, page: 1, where: { stock_level: 0 }) {
+        products(limit: 25, page: 1) {
             results {
                 id
                 name
