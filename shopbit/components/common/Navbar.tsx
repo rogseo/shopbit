@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
-import SearchBar from './SearchBar';
+import  SearchBar  from './Searchbar'
+
 import { User, ShoppingCart, Grid, Tag } from 'react-feather';
 
 const Navbar = () => {
@@ -52,11 +53,11 @@ const Navbar = () => {
                         Log in
                     </Link>
                 </li>
-                <li className='self-center'>
+                {/* <li className='self-center'>
                     <Link className='flex flex-row' href='/signup'>
                         Sign up
                     </Link>
-                </li>
+                </li> */}
             </ul>
         </div>
     );
