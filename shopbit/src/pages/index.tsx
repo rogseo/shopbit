@@ -1,26 +1,42 @@
-import React from "react";
-import { MyPage } from "../../components/common/types";
+import React from 'react';
+import { MyPage } from '../../components/common/types';
+
+// Swell
+import { swellClient } from '@/swell/connection';
+import { getAllProducts } from '@/swell/queries';
+
+import Product from './components/product';
+
 const HomePage: MyPage = () => {
-  return (
-    <>
-    <link rel="icon" href="../../../assets/favicon.ico" />
-    <div className="container mx-auto">
-        <img src='/hero.jpg' className='rounded-lg'/>
-      <div className="grid place-content-center min-h-screen">
-        <div className="flex flex-col items-center gap-4">
-          <h1 className="text-4xl my-8">
-            Home
-          </h1>
-        </div>
-      </div>
-    </div></>
-    
-  );
+    const getProducts = async () => {
+        try {
+            const response = await swellClient.request(getAllProducts);
+            console.log(response);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    getProducts();
+
+    return (
+        <>
+            <link rel='icon' href='../../../assets/favicon.ico' />
+            <div className='container mx-auto'>
+                <img src='/hero.jpg' className='rounded-lg' />
+                <div className='grid place-content-center min-h-screen'>
+                    <div className='flex flex-col items-center gap-4'>
+                        {/* <Product /> */}
+                        <h1>endpoint: {process.env.ENDPOINT}</h1>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
 };
 export default HomePage;
-HomePage.Layout = "Main";
+HomePage.Layout = 'Main';
 // HomePage.Layout = "OtherLayout"; -> error Type '"OtherLayout"' is not assignable to type '"Main" | "Admin" | undefined'.
-
 
 // export default function Home() {
 //   return (
