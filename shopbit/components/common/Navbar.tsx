@@ -52,6 +52,11 @@ const Navbar = () => {
                         Log in
                     </Link>
                 </li>
+                <li className='self-center'>
+                    <Link className='flex flex-row' href='/signup'>
+                        Sign up
+                    </Link>
+                </li>
             </ul>
         </div>
     );
