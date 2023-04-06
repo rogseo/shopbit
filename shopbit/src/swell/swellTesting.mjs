@@ -27,7 +27,7 @@ async function main() {
     }
   `;
 
-  const data = await graphQLClient.request(query);
+  const data = await graphQLClient.request(query1);
   console.log(JSON.stringify(data, undefined, 2));
 }
 

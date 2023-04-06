@@ -21,6 +21,17 @@ export const getAllProducts = gql`
                 slug
                 price
                 currency
+                categories {
+                    name
+                }
+                images {
+                    caption
+                    file {
+                        url
+                        width
+                        height
+                    }
+                }
                 options {
                     id
                     attributeId
@@ -49,6 +60,9 @@ export const getProductsByCategory = gql`
                 name
                 price
                 currency
+                categories {
+                    name
+                }
             }
         }
     }
@@ -62,6 +76,9 @@ export const getProductById = gql`
             slug
             price
             currency
+            categories {
+                name
+            }
         }
     }
 `;
@@ -75,6 +92,9 @@ export const searchProducts = gql`
                 currency
                 slug
                 price
+                categories {
+                    name
+                }
             }
         }
     }

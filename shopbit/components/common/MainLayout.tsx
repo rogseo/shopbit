@@ -1,6 +1,6 @@
 // components/common/MainLayout.tsx
-import React, { PropsWithChildren } from "react";
-import Navbar from "./Navbar";
+import React, { PropsWithChildren } from 'react';
+import Navbar from './Navbar';
 const MainLayout = ({ children }: PropsWithChildren) => {
     return (
         <>
@@ -8,7 +8,7 @@ const MainLayout = ({ children }: PropsWithChildren) => {
                 <Navbar />
             </header>
 
-            <main>{children}</main>
+            <main>{ children }</main>
         </>
     );
 };
