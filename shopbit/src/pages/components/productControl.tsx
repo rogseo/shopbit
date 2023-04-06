@@ -1,0 +1,1 @@
+// This component is for the categories, price, color, and sorting bar
