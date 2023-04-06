@@ -9,7 +9,7 @@ const Product = (product: productInterface) => {
     return (
         <div className='w-44 h-fit shadow flex flex-col rounded-lg'>
             <div
-                className='m-4 bg-contain bg-center h-40 bg-no-repeat place-items-center'
+                className='m-2 bg-contain bg-center h-40 bg-no-repeat place-items-center'
                 style={{ backgroundImage: `url(${product.product.images[0].file.url})` }}
             />
             <div className='m-4'>

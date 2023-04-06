@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import  SearchBar  from './Searchbar'
 
-import { User, ShoppingCart, Grid, Tag } from 'react-feather';
+import { User, ShoppingCart, Grid, Tag, LogIn } from 'react-feather';
 
 const Navbar = () => {
     return (
@@ -50,6 +50,7 @@ const Navbar = () => {
                 </li>
                 <li className='self-center'>
                     <Link className='flex flex-row' href='/login'>
+                        <LogIn className='mr-1' />
                         Log in
                     </Link>
                 </li>

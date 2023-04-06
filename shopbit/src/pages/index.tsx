@@ -8,6 +8,7 @@ import { getAllProducts } from '@/swell/queries';
 import Product from './components/product';
 import { productsInterface } from '@/@types/product';
 import { SyncLoader } from 'react-spinners';
+import { Star } from 'react-feather';
 
 const HomePage: MyPage = () => {
     const [products, setProducts] = useState<productsInterface>();
@@ -30,7 +31,20 @@ const HomePage: MyPage = () => {
         <>
             <link rel='icon' href='/favicon.ico' />
             <div className='container mx-auto'>
-                <img src='/hero.jpg' className='rounded-lg' />
+                <div
+                    className='relative bg-cover bg-center bg-no-repeat h-96 rounded-lg'
+                    style={{ backgroundImage: 'url("/hero.jpg")' }}
+                >
+                    <div className='absolute start-28 top-32'>
+                        <h1 className='text-3xl w-64 text-indigo-500'>
+                            Everything you need in one place.
+                        </h1>
+                        <button className='flex rounded-full bg-indigo-500 px-3 py-2 mt-4'>
+                            <Star className='text-xl text-white mr-1' />
+                            <h1 className='text-xl text-white'>Get Started</h1>
+                        </button>
+                    </div>
+                </div>
 
                 <h2 className='my-3'>Featured Products</h2>
                 {products?.products.results ? (
