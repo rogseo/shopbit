@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MyPage } from '../../components/common/types';
 
 // Swell
@@ -6,30 +6,42 @@ import { swellClient } from '@/swell/connection';
 import { getAllProducts } from '@/swell/queries';
 
 import Product from './components/product';
+import { productsInterface } from '@/@types/product';
+import { SyncLoader } from 'react-spinners';
 
 const HomePage: MyPage = () => {
+    const [products, setProducts] = useState<productsInterface>();
     const getProducts = async () => {
         try {
-            const response = await swellClient.request(getAllProducts);
-            console.log(response);
+            swellClient.request<productsInterface>(getAllProducts).then<void>((value) => {
+                setProducts(value);
+                console.log(value);
+            });
         } catch (err) {
             console.error(err);
         }
     };
 
-    getProducts();
+    useEffect(() => {
+        getProducts();
+    }, []);
 
     return (
         <>
-            <link rel='icon' href='../../../assets/favicon.ico' />
+            <link rel='icon' href='/favicon.ico' />
             <div className='container mx-auto'>
                 <img src='/hero.jpg' className='rounded-lg' />
-                <div className='grid place-content-center min-h-screen'>
-                    <div className='flex flex-col items-center gap-4'>
-                        {/* <Product /> */}
-                        <h1>endpoint: {process.env.ENDPOINT}</h1>
+
+                <h2 className='my-3'>Featured Products</h2>
+                {products?.products.results ? (
+                    <div className='grid md:grid-cols-5 sm:grid-cols-2 gap-4 min-h-screen'>
+                        {products?.products.results.map((product) => (
+                            <Product product={product} />
+                        ))}
                     </div>
-                </div>
+                ) : (
+                    <SyncLoader />
+                )}
             </div>
         </>
     );
