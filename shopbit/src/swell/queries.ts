@@ -101,20 +101,11 @@ export const searchProducts = gql`
 `;
 
 // Categories
-export const getCategories = gql`
+export const getAllCategories = gql`
     query getCategories {
         categories(limit: 10, page: 1) {
             results {
                 name
-                slug
-                images {
-                    caption
-                    file {
-                        url
-                        width
-                        height
-                    }
-                }
             }
         }
     }

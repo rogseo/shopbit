@@ -5,18 +5,21 @@ import { MyPage } from '../../components/common/types';
 import { swellClient } from '@/swell/connection';
 import { getAllProducts } from '@/swell/queries';
 
+// Components
 import Product from './components/product';
+import ProductControl from './components/productControl';
+
 import { productsInterface } from '@/@types/product';
 import { SyncLoader } from 'react-spinners';
-import { Star } from 'react-feather';
+
+import { SparklesIcon } from '@heroicons/react/24/outline';
 
 const HomePage: MyPage = () => {
     const [products, setProducts] = useState<productsInterface>();
-    const getProducts = async () => {
+    const getProducts = () => {
         try {
             swellClient.request<productsInterface>(getAllProducts).then<void>((value) => {
                 setProducts(value);
-                console.log(value);
             });
         } catch (err) {
             console.error(err);
@@ -40,13 +43,15 @@ const HomePage: MyPage = () => {
                             Everything you need in one place.
                         </h1>
                         <button className='flex rounded-full bg-indigo-500 px-3 py-2 mt-4'>
-                            <Star className='text-xl text-white mr-1' />
+                            <SparklesIcon className='h-6 w-6 text-white mr-1' />
                             <h1 className='text-xl text-white'>Get Started</h1>
                         </button>
                     </div>
                 </div>
 
-                <h2 className='my-3'>Featured Products</h2>
+                <ProductControl />
+
+                <h2 className='my-3 text-lg'>Featured Products</h2>
                 {products?.products.results ? (
                     <div className='grid md:grid-cols-5 sm:grid-cols-2 gap-4 min-h-screen'>
                         {products?.products.results.map((product) => (
@@ -54,7 +59,9 @@ const HomePage: MyPage = () => {
                         ))}
                     </div>
                 ) : (
-                    <SyncLoader />
+                    <div className='flex place-content-center'>
+                        <SyncLoader color='#94a3b8' />
+                    </div>
                 )}
             </div>
         </>

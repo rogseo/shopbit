@@ -3,11 +3,11 @@ import React from 'react';
 import { productInterface } from '@/@types/product';
 
 import { capitalizeFirst } from '@/utils/helper';
-import { Plus } from 'react-feather';
+import { PlusIcon } from '@heroicons/react/24/outline';
 
 const Product = (product: productInterface) => {
     return (
-        <div className='w-44 h-fit shadow flex flex-col rounded-lg'>
+        <div className='w-48 h-80 shadow flex flex-col rounded-lg'>
             <div
                 className='m-2 bg-contain bg-center h-40 bg-no-repeat place-items-center'
                 style={{ backgroundImage: `url(${product.product.images[0].file.url})` }}
@@ -18,8 +18,8 @@ const Product = (product: productInterface) => {
                 <p>${product.product.price.toFixed(2)}</p>
                 <div className='grid place-content-center'>
                     <button className='rounded-full bg-slate-200 py-2 px-3 mt-3'>
-                        <div className='flex'>
-                            <Plus />
+                        <div className='flex items-center   '>
+                            <PlusIcon className='w-6 h-6 mr-1' />
                             <p>Add to cart</p>
                         </div>
                     </button>
