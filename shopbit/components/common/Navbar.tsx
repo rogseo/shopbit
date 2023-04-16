@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
-import SearchBar from './SearchBar';
-import { User, ShoppingCart, Grid, Tag } from 'react-feather';
+import  SearchBar  from './Searchbar'
+
+import { UserIcon, ShoppingCartIcon, RectangleGroupIcon, TagIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline';
 
 const Navbar = () => {
     return (
@@ -25,33 +26,39 @@ const Navbar = () => {
                 </li>
                 <li className='self-center'>
                     <Link className='flex flex-row' href='/categories'>
-                        <Grid className='mr-1' />
+                        <RectangleGroupIcon className='h-6 w-6 mr-1'/>
                         Categories
                     </Link>
                 </li>
                 <li className='self-center'>
                     <Link className='flex flex-row' href='/categories'>
-                        <Tag className='mr-1' />
+                        <TagIcon className='h-6 w-6 mr-1' />
                         Deals
                     </Link>
                 </li>
                 <li className='self-center'>
                     <Link className='flex flex-row' href='/account'>
-                        <User className='mr-1' />
+                        <UserIcon className='h-6 w-6 mr-1' />
                         Account
                     </Link>
                 </li>
                 <li className='self-center'>
                     <Link className='flex flex-row' href='/cart'>
-                        <ShoppingCart className='mr-1' />
+                        <ShoppingCartIcon className='h-6 w-6 mr-1' />
                         Cart
                     </Link>
                 </li>
                 <li className='self-center'>
                     <Link className='flex flex-row' href='/login'>
+                        <ArrowLeftOnRectangleIcon className='h-6 w-6 mr-1' />
                         Log in
                     </Link>
                 </li>
+                {/* <li className='self-center'>
+                    <Link className='flex flex-row' href='/signup'>
+                        Sign up
+                    </Link>
+                </li> */}
             </ul>
         </div>
     );
