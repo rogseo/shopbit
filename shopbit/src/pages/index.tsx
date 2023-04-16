@@ -1,35 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MyPage } from '../../components/common/types';
 
 // Swell
 import { swellClient } from '@/swell/connection';
 import { getAllProducts } from '@/swell/queries';
 
+// Components
 import Product from './components/product';
+import ProductControl from './components/productControl';
+
+import { productsInterface } from '@/@types/product';
+import { SyncLoader } from 'react-spinners';
+
+import { SparklesIcon } from '@heroicons/react/24/outline';
 
 const HomePage: MyPage = () => {
-    const getProducts = async () => {
+    const [products, setProducts] = useState<productsInterface>();
+    const getProducts = () => {
         try {
-            const response = await swellClient.request(getAllProducts);
-            console.log(response);
+            swellClient.request<productsInterface>(getAllProducts).then<void>((value) => {
+                setProducts(value);
+            });
         } catch (err) {
             console.error(err);
         }
     };
 
-    getProducts();
+    useEffect(() => {
+        getProducts();
+    }, []);
 
     return (
         <>
-            <link rel='icon' href='../../../assets/favicon.ico' />
+            <link rel='icon' href='/favicon.ico' />
             <div className='container mx-auto'>
-                <img src='/hero.jpg' className='rounded-lg' />
-                <div className='grid place-content-center min-h-screen'>
-                    <div className='flex flex-col items-center gap-4'>
-                        {/* <Product /> */}
-                        <h1>endpoint: {process.env.ENDPOINT}</h1>
+                <div
+                    className='relative bg-cover bg-center bg-no-repeat h-96 rounded-lg'
+                    style={{ backgroundImage: 'url("/hero.jpg")' }}
+                >
+                    <div className='absolute start-28 top-32'>
+                        <h1 className='text-3xl w-64 text-indigo-500'>
+                            Everything you need in one place.
+                        </h1>
+                        <button className='flex rounded-full bg-indigo-500 px-3 py-2 mt-4'>
+                            <SparklesIcon className='h-6 w-6 text-white mr-1' />
+                            <h1 className='text-xl text-white'>Get Started</h1>
+                        </button>
                     </div>
                 </div>
+
+                <ProductControl />
+
+                <h2 className='my-3 text-lg'>Featured Products</h2>
+                {products?.products.results ? (
+                    <div className='grid md:grid-cols-5 sm:grid-cols-2 gap-4 min-h-screen'>
+                        {products?.products.results.map((product) => (
+                            <Product product={product} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className='flex place-content-center'>
+                        <SyncLoader color='#94a3b8' />
+                    </div>
+                )}
             </div>
         </>
     );
