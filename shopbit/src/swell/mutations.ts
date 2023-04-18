@@ -2,8 +2,8 @@ import { gql } from 'graphql-request';
 
 // Account
 export const createAccount = gql`
-  mutation createAccount($firstName: String!, $email: String!, $emailOptin: Boolean) {
-    createAccount(firstName: $firstName, email: $email, emailOptin: $emailOptin }
+  mutation createAccount($firstName: String!, $email: String!, $password: String!, $emailOptin: Boolean) {
+    createAccount(firstName: $firstName, email: $email, password: $password, emailOptin: $emailOptin }
     ) {
       firstName
       email
@@ -16,6 +16,8 @@ export const login = gql`
     mutation login($email: String!, $password: String!) {
         loginAccount(email: $email, password: $password) {
             __typename
+           
+
         }
     }
 `;

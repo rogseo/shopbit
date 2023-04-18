@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState} from "react";
 import { MyPage } from "../../components/common/types";
 import Link from 'next/link';
 import { GraphQLClient } from 'graphql-request';
@@ -7,7 +7,7 @@ import { useForm, Controller, SubmitHandler } from "react-hook-form"
 // Swell
 import { swellClient } from '@/swell/connection';
 import { login } from '@/swell/mutations';
-import { getAllProducts } from '@/swell/queries';
+import { checkTokenValidity, getAllProducts } from '@/swell/queries';
 
 import {
   List,
@@ -16,6 +16,8 @@ import {
   TextField,
   Button,
 } from "@mui/material";
+
+import { actionTypes, StoreContext } from "../utils/Store";
 
 
 export type UserSubmitForm = {
@@ -28,9 +30,11 @@ export type UserSubmitForm = {
 const LoginPage: MyPage = () => {
 
 
-  const { register, setValue, handleSubmit, control, formState: { errors } } = useForm();
+  const {  handleSubmit, control, formState: { errors } } = useForm();
 
-
+  const { state, dispatch } = useContext(StoreContext);
+  const { userInfo } = state;
+  console.log(userInfo);
 
   return (
     <>
@@ -39,6 +43,9 @@ const LoginPage: MyPage = () => {
       try {
       const response = await swellClient.request(login, { email, password })
       console.log(JSON.stringify(response));
+
+      // const account=await swellClient.request(checkTokenValidity)
+      // console.log(account);
 
     } catch (err: any) {
         console.log(err)

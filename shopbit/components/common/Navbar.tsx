@@ -1,10 +1,13 @@
 import Link from 'next/link';
-import React from 'react';
-import  SearchBar  from './Searchbar'
+import React, {useContext} from 'react';
+import  SearchBar  from './Searchbar';
+
 
 import { UserIcon, ShoppingCartIcon, RectangleGroupIcon, TagIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline';
 
 const Navbar = () => {
+
+   
     return (
         <div className='container navbar bg-base-100 mx-auto'>
             <ul className='grid grid-cols-9 gap-4 my-3 place-content-between place-items-center'>
@@ -54,11 +57,11 @@ const Navbar = () => {
                         Log in
                     </Link>
                 </li>
-                {/* <li className='self-center'>
+                <li className='self-center'>
                     <Link className='flex flex-row' href='/signup'>
                         Sign up
                     </Link>
-                </li> */}
+                </li>
             </ul>
         </div>
     );
