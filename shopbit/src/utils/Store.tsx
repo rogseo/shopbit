@@ -23,10 +23,11 @@ interface Actions {
     type: string;
     payload?: IAuthUser | string;
 }
-
+console.log(Cookies.get("userInfo"))
 const initialState: StateType = {
     userInfo: Cookies.get("userInfo")
-        ? JSON.parse(Cookies.get("userInfo")!)
+        // ? JSON.parse(Cookies.get("userInfo")!)
+        ? Cookies.get("userInfo")
         : null,
 }
 

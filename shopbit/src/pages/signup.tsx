@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import { StoreContext } from "../utils/Store";
 import { MyPage } from "../../components/common/types";
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { GraphQLClient } from 'graphql-request';
 import { useForm, Controller, SubmitHandler } from "react-hook-form"
-import { useRouter } from "next/router";
+
 import axios from "axios";
 import Cookies from "js-cookie";
+import {useRouter} from "next/router";
 
 // Swell
 import { swellClient } from '@/swell/connection';
@@ -19,6 +20,7 @@ import {
     Typography,
     TextField,
     Button,
+    Link
 } from "@mui/material";
 
 
@@ -33,15 +35,15 @@ export type UserSubmitForm = {
 const SignupPage: MyPage = () => {
 
     const { state, dispatch } = useContext(StoreContext);
-    const { userInfo } = state; 
+    const { userInfo } = state;
     const router = useRouter();
     const redirect = router.query.redirect as string;
 
     useEffect(() => {
         if (userInfo) {
-          router.push("/");
+            router.push("/");
         }
-      }, []);
+    }, []);
 
     const { handleSubmit, control, formState: { errors } } = useForm();
     console.log(userInfo)
@@ -56,10 +58,10 @@ const SignupPage: MyPage = () => {
                         name,
                         email,
                         password,
-                      });
-                      dispatch({ type: "USER_LOGIN", payload: data });
-                      Cookies.set("userInfo", data);
-                      router.push(redirect || "/");
+                    });
+                    dispatch({ type: "USER_LOGIN", payload: data });
+                    Cookies.set("userInfo", data);
+                    router.push(redirect || "/");
 
                 } catch (err: any) {
                     console.log(err.response.data)
@@ -157,6 +159,12 @@ const SignupPage: MyPage = () => {
                         <Button variant="contained" type="submit" fullWidth color="primary">
                             Register
                         </Button>
+                    </ListItem>
+                    <ListItem>
+                        Already have account? &nbsp;
+                        <NextLink href={"login"} passHref>
+                            <Link>Log In</Link>
+                        </NextLink>
                     </ListItem>
 
                 </List>
