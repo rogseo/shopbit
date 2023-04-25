@@ -35,14 +35,15 @@ const CartPage: MyPage = () => {
   } = state;
   console.log(cartItems);
 
-  // const updateCartHandler = async (item: IProduct, quantity: number) => {
-  //   const { data } = await axios.get(`/api/products/${item._id}`);
-  //   if (data.countInStock < quantity) {
-  //     window.alert('Sorry. Product is out of stock');
-  //     return;
-  //   }
-  //   dispatch({ type: actionTypes.CART_ADD_ITEM, payload: { ...item, quantity } });
-  // };
+  const updateCartHandler = async (item: IProduct, qty: number) => {
+    // const { data } = await axios.get(`/api/products/${item._id}`);
+    if (item.countInStock < qty) {
+      window.alert('Sorry. Product is out of stock');
+      return;
+    }
+    const quantity=Number(qty);
+    dispatch({ type: actionTypes.CART_ADD_ITEM, payload: { ...item, quantity } });
+  };
 
   const removeItemHandler = (item: IProduct) => {
     dispatch({ type: actionTypes.CART_REMOVE_ITEM, payload: item });
@@ -92,11 +93,24 @@ const CartPage: MyPage = () => {
                           </Link>
                         </NextLink>
                       </td>
-                      <td className="p-5 text-right">{item.quantity}</td>
+                      <td className="p-5 text-right">
+                        <select
+                        className="bg-white"
+                        value={item.quantity}
+                        onChange={(e) =>
+                          updateCartHandler(item, e.target.value)
+                        }
+                      >
+                        {[...Array(item.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </select></td>
                       <td className="p-5 text-right">${item.price}</td>
                       <td className="p-5 text-center">
                         <button onClick={() => removeItemHandler(item)}>
-                          X
+                          remove
                           {/* <XCircleIcon className="h-5 w-5"></XCircleIcon> */}
                         </button>
                       </td>
@@ -109,10 +123,10 @@ const CartPage: MyPage = () => {
               <ul>
                 <li>
                   <div className="pb-3 text-xl">
-                  Subtotal (
+                    Subtotal (
                     {(cartItems as Array<IProduct>).reduce(
-                      (a, c) => a + c.quantity,
-                      0
+                      (a, c) => a + c.quantity, 0
+
                     )}{" "}
                     items) : $
                     {(cartItems as Array<IProduct>).reduce(
