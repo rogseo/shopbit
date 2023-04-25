@@ -1,10 +1,17 @@
 import Link from 'next/link';
-import React from 'react';
-import  SearchBar  from './Searchbar'
+import React, { useContext } from 'react';
+import SearchBar from './Searchbar';
+import { StoreContext } from "../../src/utils/Store";
+import Cookies from 'js-cookie';
 
 import { UserIcon, ShoppingCartIcon, RectangleGroupIcon, TagIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline';
 
 const Navbar = () => {
+
+    const { state, dispatch } = useContext(StoreContext);
+    const { userInfo } = state;
+
+
     return (
         <div className='container navbar bg-base-100 mx-auto'>
             <ul className='grid grid-cols-9 gap-4 my-3 place-content-between place-items-center'>
@@ -26,7 +33,7 @@ const Navbar = () => {
                 </li>
                 <li className='self-center'>
                     <Link className='flex flex-row' href='/categories'>
-                        <RectangleGroupIcon className='h-6 w-6 mr-1'/>
+                        <RectangleGroupIcon className='h-6 w-6 mr-1' />
                         Categories
                     </Link>
                 </li>
@@ -48,12 +55,23 @@ const Navbar = () => {
                         Cart
                     </Link>
                 </li>
-                <li className='self-center'>
-                    <Link className='flex flex-row' href='/login'>
-                        <ArrowLeftOnRectangleIcon className='h-6 w-6 mr-1' />
-                        Log in
+               
+                {userInfo ? (
+                    <li className='self-center'>
+                    <Link className='flex flex-row' href='/' onClick={()=>{
+                          Cookies.remove("userInfo");
+                          dispatch({ type: 'USER_LOGOUT' });
+                    }}>
+                        Log Out
                     </Link>
                 </li>
+
+                ): (<li className='self-center'>
+                <Link className='flex flex-row' href='/login'>
+                    <ArrowLeftOnRectangleIcon className='h-6 w-6 mr-1' />
+                    Log in
+                </Link>
+            </li> )}
                 {/* <li className='self-center'>
                     <Link className='flex flex-row' href='/signup'>
                         Sign up
