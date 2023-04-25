@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext} from 'react';
 import { MyPage } from '../../components/common/types';
 
 // Swell
@@ -15,12 +15,14 @@ import { SyncLoader } from 'react-spinners';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 //
-import Product from "../../models/Product";
+import Product, {IProduct} from "../../models/Product";
 import db from "../utils/db";
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { InferGetServerSidePropsType } from "next";
 import { post } from 'cypress/types/jquery';
+import { actionTypes,StoreContext } from '../utils/Store';
+
 
 const HomePage: MyPage = ({
     products,
@@ -39,7 +41,25 @@ const HomePage: MyPage = ({
     // useEffect(() => {
     //     getProducts();
     // }, []);
-    console.log(products)
+
+    const { state, dispatch } = useContext(StoreContext);
+    const router = useRouter();
+  
+  const addToCartHandler = async (product: IProduct) => {
+    const existItem = state.cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    const { data } = await axios.get(`/api/products/${product._id}`);
+   
+
+
+    if (data.countInStock < quantity) {
+      window.alert('Sorry. Product is out of stock');
+      return;
+    }
+    dispatch({ type: actionTypes.CART_ADD_ITEM, payload: { ...product, quantity } });
+    router.push('/cart');
+  };
+
    
 
     return (
