@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import SearchBar from './Searchbar';
 import { StoreContext } from "../../src/utils/Store";
 import Cookies from 'js-cookie';
@@ -9,7 +9,11 @@ import { UserIcon, ShoppingCartIcon, RectangleGroupIcon, TagIcon, ArrowLeftOnRec
 const Navbar = () => {
 
     const { state, dispatch } = useContext(StoreContext);
-    const { userInfo } = state;
+    const { cart, userInfo } = state;
+    const [cartItemsCount, setCartItemsCount] = useState(0);
+    useEffect(() => {
+      setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
+    }, [cart.cartItems]);
 
 
     return (
@@ -51,8 +55,15 @@ const Navbar = () => {
                 </li>
                 <li className='self-center'>
                     <Link className='flex flex-row' href='/cart'>
+                        
                         <ShoppingCartIcon className='h-6 w-6 mr-1' />
                         Cart
+                        {cartItemsCount > 0 && (
+                    <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                      {cartItemsCount}
+                    </span>
+                  )}
+                        
                     </Link>
                 </li>
                

@@ -103,7 +103,7 @@ const reducer = (state = initialState, action: Actions): StateType => {
         }
         case actionTypes.CART_CLEAR:
             return { ...state, cart: { ...state.cart, cartItems: [] } };
-            
+
         case actionTypes.SAVE_SHIPPING_ADDRESS:
             return {
                 ...state,
@@ -122,11 +122,11 @@ const reducer = (state = initialState, action: Actions): StateType => {
     }
 }
 
-const StoreProvider: React.FC<any> = ({ children }) => {
+const StoreProvider: React.FC<any> = (props) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     return (
         <StoreContext.Provider value={{ state, dispatch }}>
-            {children}
+            {props.children}
         </StoreContext.Provider>
     );
 }

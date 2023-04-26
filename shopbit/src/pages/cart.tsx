@@ -158,4 +158,6 @@ const CartPage: MyPage = () => {
 export default CartPage;
 CartPage.Layout = "Main"
 
-// export default dynamic<any>(() => Promise.resolve(CartPage) as LoaderComponent<any>, { ssr: false });
+
+
+//export default dynamic<any>(() => import('./cart.tsx') , { ssr: false });//
