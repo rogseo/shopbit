@@ -56,7 +56,7 @@ const Navbar = () => {
     return (
         <div className='container navbar bg-base-100 mx-auto'>
             <ul className='grid lg:grid-cols-8 md:grid-cols-12 md:gap-4 my-3 place-content-between place-items-center'>
-                <li className='place-self-start'>
+                <li className='place-self-center'>
                     <Link href='/' className='flex flex-row'>
                         <h1 className='text-2xl self-end'>ShopBit</h1>
                         <img
@@ -71,26 +71,26 @@ const Navbar = () => {
                     <SearchBar />
                 </li>
                 {/* Nav bar with breadcrumb links */}
-                {/* <>
-                    <li className='self-center'>
+                <ul className='grid max-[1300px]:hidden grid-cols-5 col-span-3 place-items-center'>
+                    <li>
                         <Link className='flex flex-row' href='/categories'>
                             <RectangleGroupIcon className='h-6 w-6 mr-1' />
                             Categories
                         </Link>
                     </li>
-                    <li className='self-center'>
+                    <li>
                         <Link className='flex flex-row' href='/categories'>
                             <TagIcon className='h-6 w-6 mr-1' />
                             Deals
                         </Link>
                     </li>
-                    <li className='self-center'>
+                    <li>
                         <Link className='flex flex-row' href='/account'>
                             <UserIcon className='h-6 w-6 mr-1' />
                             Account
                         </Link>
                     </li>
-                    <li className='self-center'>
+                    <li>
                         <Link className='flex flex-row' href='/cart'>
                             <ShoppingCartIcon className='h-6 w-6 mr-1' />
                             Cart
@@ -122,8 +122,8 @@ const Navbar = () => {
                             </Link>
                         </li>
                     )}
-                </> */}
-                <li className='col-end-13'>
+                </ul>
+                <li className='col-end-13 min-[1300px]:hidden'>
                     <IconButton
                         onClick={handleClick}
                         size='small'
