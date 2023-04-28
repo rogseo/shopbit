@@ -1,9 +1,9 @@
-import React, { useContext} from 'react';
+import React, { useContext } from 'react';
 import { MyPage } from '../../components/common/types';
 
 // Swell
-import { swellClient } from '@/swell/connection';
-import { getAllProducts } from '@/swell/queries';
+// import { swellClient } from '@/swell/connection';
+// import { getAllProducts } from '@/swell/queries';
 
 // Components
 import ProductItem from './components/ProductItem';
@@ -11,22 +11,16 @@ import ProductControl from './components/productControl';
 
 import { productsInterface } from '@/@types/product';
 import { SyncLoader } from 'react-spinners';
-
 import { SparklesIcon } from '@heroicons/react/24/outline';
-
-//
-import Product, {IProduct} from "../../models/Product";
-import db from "../utils/db";
+import Product, { IProduct } from '../../models/Product';
+import db from '../utils/db';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { InferGetServerSidePropsType } from "next";
+import { InferGetServerSidePropsType } from 'next';
 import { post } from 'cypress/types/jquery';
-import { actionTypes,StoreContext } from '../utils/Store';
+import { actionTypes, StoreContext } from '../utils/Store';
 
-
-const HomePage: MyPage = ({
-    products,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const HomePage: MyPage = ({ products }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     // const [products, setProducts] = useState<productsInterface>();
     // const getProducts = () => {
     //     try {
@@ -44,23 +38,19 @@ const HomePage: MyPage = ({
 
     const { state, dispatch } = useContext(StoreContext);
     const router = useRouter();
-  
-  const addToCartHandler = async (product: IProduct) => {
-    const existItem = state.cart.cartItems.find((x) => x._id === product._id);
-    const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/products/${product._id}`);
-   
 
+    const addToCartHandler = async (product: IProduct) => {
+        const existItem = state.cart.cartItems.find((x) => x._id === product._id);
+        const quantity = existItem ? existItem.quantity + 1 : 1;
+        const { data } = await axios.get(`/api/products/${product._id}`);
 
-    if (data.countInStock < quantity) {
-      window.alert('Sorry. Product is out of stock');
-      return;
-    }
-    dispatch({ type: actionTypes.CART_ADD_ITEM, payload: { ...product, quantity } });
-    router.push('/cart');
-  };
-
-   
+        if (data.countInStock < quantity) {
+            window.alert('Sorry. Product is out of stock');
+            return;
+        }
+        dispatch({ type: actionTypes.CART_ADD_ITEM, payload: { ...product, quantity } });
+        router.push('/cart');
+    };
 
     return (
         <>
@@ -74,7 +64,7 @@ const HomePage: MyPage = ({
                         <h1 className='text-3xl w-64 text-indigo-500'>
                             Everything you need in one place.
                         </h1>
-                        <button className='flex rounded-full bg-indigo-500 px-3 py-2 mt-4'>
+                        <button className='flex rounded-full bg-indigo-500 px-4 py-2 mt-4'>
                             <SparklesIcon className='h-6 w-6 text-white mr-1' />
                             <h1 className='text-xl text-white'>Get Started</h1>
                         </button>
@@ -84,8 +74,8 @@ const HomePage: MyPage = ({
                 <ProductControl />
 
                 <h2 className='my-3 text-lg'>Featured Products</h2>
-                {products? (
-                    <div className='grid md:grid-cols-5 sm:grid-cols-2 gap-4 min-h-screen'>
+                {products ? (
+                    <div className='grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-4 place-items-center'>
                         {products.map((product) => (
                             <ProductItem product={product} />
                         ))}
@@ -101,7 +91,6 @@ const HomePage: MyPage = ({
 };
 export default HomePage;
 HomePage.Layout = 'Main';
-
 
 export const getServerSideProps = async () => {
     await db.connect();
