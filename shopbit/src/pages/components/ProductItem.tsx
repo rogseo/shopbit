@@ -17,7 +17,6 @@ const ProductItem = (product: productInterface) => {
     const router = useRouter();
   
   const addToCartHandler = async (product: IProduct) => {
-    console.log(product._id)
     const existItem = state.cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
 

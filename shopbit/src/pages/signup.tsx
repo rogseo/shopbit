@@ -46,7 +46,7 @@ const SignupPage: MyPage = () => {
     }, []);
 
     const { handleSubmit, control, formState: { errors } } = useForm();
-    console.log(userInfo)
+
 
 
     return (
