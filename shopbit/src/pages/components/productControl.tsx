@@ -57,26 +57,28 @@ const ProductControl = () => {
         try {
             swellClient.request<categoriesInterface>(getAllCategories).then<void>((value) => {
                 setCategories(value);
-                console.log(categories);
-            })
+                // console.log(categories);
+            });
         } catch (err) {
             console.error(err);
         }
-    }
+    };
 
     useEffect(() => {
         getCategories();
-    }, [])
+    }, []);
 
     return (
-        <div className='mt-3 flex justify-between'>
+        <div className='mt-3 grid md:grid-cols-2 sm:grid-cols-1 gap-3 justify-between'>
             <div className='flex'>
                 <DropdownButton name='Categories' menuItems={categories?.categories.results} />
                 <DropdownButton name='Price' menuItems={prices} />
                 <DropdownButton name='Color' menuItems={color} />
             </div>
 
-            <DropdownButton name='Sort by' menuItems={sort} chevronIcon={false} />
+            <div className='md:col-end-4'>
+                <DropdownButton name='Sort by' menuItems={sort} chevronIcon={false} />
+            </div>
         </div>
     );
 };
