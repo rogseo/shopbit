@@ -40,7 +40,7 @@ const LoginPage: MyPage = () => {
                 className='container mx-auto relative bg-cover bg-center bg-no-repeat h-screen rounded-lg grid place-items-center'
                 style={{ backgroundImage: 'url("/login.jpg")' }}
             >
-                <div className='bg-slate-200/90 container w-1/3 rounded-lg py-12'>
+                <div className='bg-slate-200/90 container xl:w-1/3 md:w-2/3 sm:w-5/6 rounded-lg py-12'>
                     <h1 className='text-4xl text-center'>Log in</h1>
                     <form
                         onSubmit={handleSubmit(async ({ email, password }) => {
