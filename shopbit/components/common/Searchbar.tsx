@@ -27,10 +27,10 @@ const SearchBar = () => {
     };
 
     return (
-        <div className='relative text-sm bg-accent-0 text-base w-full transition-colors duration-150 border border-accent-2 rounded-full'>
+        <div className='relative text-sm bg-accent-0 text-base w-full transition-colors duration-150 border-2 border-slate-200 accent-indigo-500 rounded-full'>
             <label className='hidden'>Search</label>
             <input
-                className='bg-transparent px-3 py-2  w-full rounded-full pr-10'
+                className='bg-slate-200 px-3 py-2 w-full rounded-full'
                 placeholder='Search for products...'
                 defaultValue={router.query.q}
                 onKeyUp={handleKeyUp}
