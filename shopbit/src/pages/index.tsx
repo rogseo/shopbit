@@ -64,7 +64,7 @@ const HomePage: MyPage = ({ products }: InferGetServerSidePropsType<typeof getSe
                         <h1 className='text-3xl w-64 text-indigo-500'>
                             Everything you need in one place.
                         </h1>
-                        <button className='flex rounded-full bg-indigo-500 px-4 py-2 mt-4'>
+                        <button className='flex rounded-full bg-indigo-500 px-4 py-2 mt-4 hover:bg-indigo-700 transition ease-in-out duration-300'>
                             <SparklesIcon className='h-6 w-6 text-white mr-1' />
                             <h1 className='text-xl text-white'>Get Started</h1>
                         </button>
