@@ -112,7 +112,7 @@ const ProductDetail: MyPage = ({
     // );
 
     return (
-        <div className='container grid grid-cols-2 mx-auto'>
+        <div className='container grid md:grid-cols-2 sm:grid-cols-1 mx-auto'>
             <div className='grid grid-cols-1'>
                 <div>
                     <Link className='text-black no-underline inline-flex' href='/'>
@@ -148,7 +148,7 @@ const ProductDetail: MyPage = ({
                         <li>
                             <div className='grid place-content-stretch'>
                                 <button
-                                    className='rounded-full bg-slate-200 hover:bg-indigo-500 transition ease-in-out duration-300 py-2 px-3 my-4'
+                                    className='rounded-full bg-slate-200 hover:bg-indigo-200 transition ease-in-out duration-300 py-2 px-3 my-4'
                                     //onClick={() => addToCartHandler(product.product as IProduct)}
                                 >
                                     <div className='flex justify-center'>

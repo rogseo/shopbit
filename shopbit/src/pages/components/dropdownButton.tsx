@@ -58,7 +58,7 @@ const DropdownButton = ({ name, menuItems, chevronIcon = true }: dropdownInterfa
                 aria-expanded={open ? 'true' : undefined}
                 aria-haspopup='true'
                 onClick={handleToggle}
-                className='rounded-full bg-slate-200 py-2 px-3 mr-1 hover:bg-indigo-500 transition ease-in-out duration-300'
+                className='rounded-full bg-slate-200 py-2 px-3 mr-1 hover:bg-indigo-200 transition ease-in-out duration-300'
             >
                 <div className='flex'>
                     <p>{selection ? selection: name}</p>
