@@ -15,6 +15,7 @@ import {
 
 const DropdownButton = ({ name, menuItems, chevronIcon = true }: dropdownInterface) => {
     const [open, setOpen] = React.useState(false);
+    const [selection, setSelection] = React.useState<string | undefined>(undefined);
     const anchorRef = React.useRef<HTMLButtonElement>(null);
 
     const handleToggle = () => {
@@ -57,10 +58,10 @@ const DropdownButton = ({ name, menuItems, chevronIcon = true }: dropdownInterfa
                 aria-expanded={open ? 'true' : undefined}
                 aria-haspopup='true'
                 onClick={handleToggle}
-                className='rounded-full bg-slate-200 py-2 px-3 mr-1'
+                className='rounded-full bg-slate-200 py-2 px-3 mr-1 hover:bg-indigo-500 transition ease-in-out duration-300'
             >
                 <div className='flex'>
-                    <p>{name}</p>
+                    <p>{selection ? selection: name}</p>
                     {chevronIcon ? (
                         <div>
                             {open ? (
@@ -100,7 +101,10 @@ const DropdownButton = ({ name, menuItems, chevronIcon = true }: dropdownInterfa
                                         onKeyDown={handleListKeyDown}
                                     >
                                         {menuItems.map((item) => (
-                                            <MenuItem key={item.name} onClick={handleClose}>
+                                            <MenuItem key={item.name} onClick={(e) => {
+                                                handleClose(e);
+                                                setSelection(item.name);}
+                                            }>
                                                 {item.name}
                                             </MenuItem>
                                         ))}
