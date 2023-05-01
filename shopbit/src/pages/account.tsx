@@ -3,7 +3,7 @@ import { MyPage } from "../../components/common/types";
 const AccountPage: MyPage = () => {
   return  <>
     
-  <div className="container">
+  <div className="container mx-auto">
     <div className="grid place-content-center min-h-screen">
       <div className="flex flex-col items-center gap-4">
         <h1 className="text-4xl my-8">

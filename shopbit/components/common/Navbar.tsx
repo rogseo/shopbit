@@ -95,7 +95,7 @@ const Navbar = () => {
                             <ShoppingCartIcon className='h-6 w-6 mr-1' />
                             Cart
                             {cartItemsCount > 0 && (
-                                <span className='ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white'>
+                                <span className='ml-1 rounded-full bg-indigo-500 px-2 py-1 text-xs font-bold text-white'>
                                     {cartItemsCount}
                                 </span>
                             )}
@@ -176,7 +176,7 @@ const Navbar = () => {
                             <ShoppingCartIcon className='h-6 w-6 mr-1' />
                             Cart
                             {cartItemsCount > 0 && (
-                                <span className='ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white'>
+                                <span className='ml-1 rounded-full bg-indigo-500 px-2 py-1 text-xs font-bold text-white'>
                                     {cartItemsCount}
                                 </span>
                             )}
@@ -205,7 +205,7 @@ const Navbar = () => {
 
                     <MenuItem onClick={handleClose}>
                         {userInfo ? (
-                            <li className='self-center'>
+                            <li>
                                 <Link
                                     className='flex flex-row'
                                     href='/'
