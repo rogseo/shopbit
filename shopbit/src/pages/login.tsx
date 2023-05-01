@@ -76,7 +76,6 @@ const LoginPage: MyPage = () => {
                                             label='Email'
                                             inputProps={{ type: 'email' }}
                                             error={Boolean(errors.email)}
-                                            color='secondary'
                                             helperText={
                                                 errors.email
                                                     ? errors.email.type === 'pattern'
@@ -106,7 +105,6 @@ const LoginPage: MyPage = () => {
                                             label='Password'
                                             inputProps={{ type: 'password' }}
                                             error={Boolean(errors.password)}
-                                            color='secondary'
                                             helperText={
                                                 errors.password
                                                     ? errors.password.type === 'minLength'

@@ -37,79 +37,17 @@ const ProductDetail: MyPage = ({
     const { state, dispatch } = useContext(StoreContext);
 
     if (!product) {
-        return <div>Product Not Found</div>;
+        return (
+            <div className='grid grid-cols-1 place-content-center h-screen'>
+                <img src='/shopbit_logo.png' className='w-36 place-self-center' />
+                <p className='text-center'>
+                    <NextLink href='/' passHref>
+                        <Link className='text-black no-underline'>Product not found.</Link>
+                    </NextLink>
+                </p>
+            </div>
+        );
     }
-
-    //   const addToCartHandler = async () => {
-    //     const existItem = state.cart.cartItems.find((x) => x._id === product._id);
-    //     const quantity = existItem ? existItem.quantity + 1 : 1;
-    //     const { data } = await axios.get(`/api/products/${product._id}`);
-    //     if (data.countInStock < quantity) {
-    //       window.alert("Sorry. Product is out of stock");
-    //       return;
-    //     }
-    //     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity } });
-    //     router.push("/cart");
-    //   };
-
-    // return (
-    //     <>
-    //         <div className="py-2">
-    //             <Link href="/">back to products</Link>
-    //         </div>
-    //         <div className="grid md:grid-cols-4 md:gap-3">
-    //             <div className="md:col-span-2">
-    //                 <div
-    //                     className='m-2 bg-contain bg-center h-40 bg-no-repeat place-items-center'
-    //                     style={{ backgroundImage: `url(${product.image})` }}
-    //                 />
-    //                 {/* <Image
-    //                     src={product.image}
-    //                     alt={product.name}
-    //                     width={640}
-    //                     height={640}
-    //                     sizes="100vw"
-    //                     style={{
-    //                         width: '100%',
-    //                         height: 'auto',
-    //                     }}
-    //                 ></Image> */}
-    //             </div>
-    //             <div>
-    //                 <ul>
-    //                     <li>
-    //                         <h1 className="text-lg">{product.name}</h1>
-    //                     </li>
-    //                     <li>Category: {product.category}</li>
-    //                     <li>Brand: {product.brand}</li>
-    //                     <li>
-    //                         {product.rating} of {product.numReviews} reviews
-    //                     </li>
-    //                     <li>Description: {product.description}</li>
-    //                 </ul>
-    //             </div>
-    //             <div>
-    //                 <div className="card p-5">
-    //                     <div className="mb-2 flex justify-between">
-    //                         <div>Price</div>
-    //                         <div>${product.price}</div>
-    //                     </div>
-    //                     <div className="mb-2 flex justify-between">
-    //                         <div>Status</div>
-    //                         <div>{product.countInStock > 0 ? 'In stock' : 'Unavailable'}</div>
-    //                     </div>
-    //                      <button
-    //                         className="primary-button w-full"
-    //                         // onClick={addToCartHandler}
-    //                     >
-    //                         Add to cart
-    //                     </button>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </>
-
-    // );
 
     return (
         <div className='container grid md:grid-cols-2 sm:grid-cols-1 mx-auto'>
