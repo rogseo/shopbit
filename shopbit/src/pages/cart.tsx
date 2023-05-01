@@ -33,7 +33,7 @@ const CartPage: MyPage = () => {
   const {
     cart: { cartItems },
   } = state;
-  console.log(cartItems);
+
 
   const updateCartHandler = async (item: IProduct, qty: number) => {
     // const { data } = await axios.get(`/api/products/${item._id}`);
@@ -160,4 +160,4 @@ CartPage.Layout = "Main"
 
 
 
-//export default dynamic<any>(() => import('./cart.tsx') , { ssr: false });//
+//export default dynamic<any>(() => Promise.resolve(CartPage) as LoaderComponent<any>, { ssr: false });

@@ -42,7 +42,6 @@ interface Actions {
     type: string;
     payload?: IProduct | IAuthUser | ShippingAddressType | string;
 }
-console.log(Cookies.get("userInfo"))
 const initialState: StateType = {
     cart: {
         cartItems: Cookies.get("cartItems")

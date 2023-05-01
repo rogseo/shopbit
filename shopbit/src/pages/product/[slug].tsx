@@ -174,10 +174,8 @@ ProductDetail.Layout = 'Main';
 export const getServerSideProps = async (context: any) => {
     const { params } = context;
     const { slug } = params;
-    console.log(slug);
     await db.connect();
     const product = await Product.findOne({ slug }).lean();
-    console.log(product);
     await db.disconnect();
     return {
         props: {

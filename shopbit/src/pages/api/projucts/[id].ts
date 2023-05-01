@@ -13,7 +13,6 @@ handler.get(async (req, res) => {
  
   const product = await Product.findById(req.query.id);
   await db.disconnect();
-  console.log(product)
   res.send(product);
 });
 
