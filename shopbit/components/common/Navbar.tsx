@@ -79,7 +79,7 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link className='flex flex-row' href='/categories'>
+                        <Link className='flex flex-row' href='/deals'>
                             <TagIcon className='h-6 w-6 mr-1' />
                             Deals
                         </Link>
