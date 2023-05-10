@@ -1,34 +1,137 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MyPage } from '../../components/common/types';
+
+import { Tabs, Tab } from '@mui/material';
+import { TabPanel, TabContext } from '@mui/lab';
+
+import { Scrollbar } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 const CategoriesPage: MyPage = () => {
+    const [value, setValue] = useState('0');
+
+    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+        setValue(newValue);
+    };
+
     return (
         <div className='container mx-auto grid grid-cols-1 gap-4'>
-            <div className='grid grid-cols-6 gap-4'>
-                <div
-                    className='relative bg-cover bg-center bg-no-repeat h-60 rounded-lg place-content-center grid'
-                    style={{ backgroundImage: 'url("/category-shoes.jpg")' }}
+            <div className='container mx-auto'>
+                <Swiper
+                    scrollbar={{
+                        hide: true,
+                    }}
+                    modules={[Scrollbar]}
+                    className='mySwiper'
                 >
-                    <h1 className='text-3xl bg-slate-100/70 rounded-lg p-3'>Shoes</h1>
-                </div>
-                <div
-                    className='relative bg-cover bg-center bg-no-repeat h-60 rounded-lg place-content-center grid'
-                    style={{ backgroundImage: 'url("/category-clothes.jpg")' }}
-                >
-                    <h1 className='text-3xl bg-slate-100/70 rounded-lg p-3'>Clothes</h1>
-                </div>
-                <div
-                    className='relative bg-cover bg-center bg-no-repeat h-60 rounded-lg place-content-center grid'
-                    style={{ backgroundImage: 'url("/category-furniture.jpg")' }}
-                >
-                    <h1 className='text-3xl bg-slate-100/80 rounded-lg p-3'>Furniture</h1>
-                </div>
-                <div
-                    className='relative bg-cover bg-center bg-no-repeat h-60 rounded-lg place-content-center grid'
-                    style={{ backgroundImage: 'url("/category-electronics.jpg")' }}
-                >
-                    <h1 className='text-3xl bg-slate-100/80 rounded-lg p-3'>Electronics</h1>
-                </div>
+                    <SwiperSlide>
+                        <div
+                            className='relative bg-cover bg-center bg-no-repeat h-48 rounded-lg'
+                            style={{ backgroundImage: 'url("/category-shoes.jpg")' }}
+                        />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div
+                            className='relative bg-cover bg-center bg-no-repeat h-48 rounded-lg'
+                            style={{ backgroundImage: 'url("/category-clothes.jpg")' }}
+                        />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div
+                            className='relative bg-cover bg-center bg-no-repeat h-48 rounded-lg'
+                            style={{ backgroundImage: 'url("/category-furniture.jpg")' }}
+                        />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div
+                            className='relative bg-cover bg-center bg-no-repeat h-48 rounded-lg'
+                            style={{ backgroundImage: 'url("/category-electronics.jpg")' }}
+                        />
+                    </SwiperSlide>
+                </Swiper>
             </div>
+
+            <TabContext value={value}>
+                <Tabs
+                    onChange={handleChange}
+                    variant='scrollable'
+                    scrollButtons='auto'
+                    allowScrollButtonsMobile
+                >
+                    <Tab
+                        label={<p>Shoes</p>}
+                        value='0'
+                        sx={{
+                            fontFamily: 'Inter',
+                            fontSize: '1rem',
+                            textTransform: 'none',
+                            color: 'black',
+                            borderRadius: 15,
+                        }}
+                    />
+                    <Tab
+                        label={<p>Clothes</p>}
+                        value='1'
+                        sx={{
+                            fontFamily: 'Inter',
+                            fontSize: '1rem',
+                            textTransform: 'none',
+                            color: 'black',
+                            borderRadius: 15,
+                        }}
+                    />
+                    <Tab
+                        label={<p>Furniture</p>}
+                        value='2'
+                        sx={{
+                            fontFamily: 'Inter',
+                            fontSize: '1rem',
+                            textTransform: 'none',
+                            color: 'black',
+                            borderRadius: 15,
+                        }}
+                    />
+                    <Tab
+                        label={<p>Electronics</p>}
+                        value='3'
+                        sx={{
+                            fontFamily: 'Inter',
+                            fontSize: '1rem',
+                            textTransform: 'none',
+                            color: 'black',
+                            borderRadius: 15,
+                        }}
+                    />
+                    <Tab
+                        label={<p>Jewelry</p>}
+                        value='4'
+                        sx={{
+                            fontFamily: 'Inter',
+                            fontSize: '1rem',
+                            textTransform: 'none',
+                            color: 'black',
+                            borderRadius: 15,
+                        }}
+                    />
+                </Tabs>
+                <TabPanel value='0'>
+                    <p>Shoes items here</p>
+                </TabPanel>
+                <TabPanel value='1'>
+                    <p>Clothes favorites here</p>
+                </TabPanel>
+                <TabPanel value='2'>
+                    <p>Furniture items here</p>
+                </TabPanel>
+                <TabPanel value='3'>
+                    <p>Electronics items here</p>
+                </TabPanel>
+                <TabPanel value='4'>
+                    <p>Jewelry items here</p>
+                </TabPanel>
+            </TabContext>
         </div>
     );
 };
