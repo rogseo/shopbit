@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MyPage } from '../../components/common/types';
 
-import { Tabs, Tab, ThemeProvider } from '@mui/material';
+import { Tabs, Tab } from '@mui/material';
 import { TabPanel, TabContext } from '@mui/lab';
 import { HeartIcon, ClockIcon, FireIcon } from '@heroicons/react/24/outline';
 
@@ -23,7 +23,12 @@ const DealsPage: MyPage = () => {
                 </div>
             </div>
             <TabContext value={value}>
-                <Tabs onChange={handleChange}>
+                <Tabs
+                    onChange={handleChange}
+                    variant='scrollable'
+                    scrollButtons='auto'
+                    allowScrollButtonsMobile
+                >
                     <Tab
                         iconPosition='start'
                         icon={<FireIcon className='h-6 w-6' />}
