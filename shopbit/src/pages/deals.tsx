@@ -15,10 +15,10 @@ const DealsPage: MyPage = () => {
     return (
         <div className='container mx-auto grid grid-cols-1 gap-4'>
             <div
-                className='relative bg-cover bg-center bg-no-repeat h-48 rounded-lg'
+                className='relative bg-cover bg-center bg-no-repeat md:h-96 h-48 rounded-lg'
                 style={{ backgroundImage: 'url("/spring-deals.jpg")' }}
             >
-                <div className='absolute start-28 top-16'>
+                <div className='absolute md:start-28 md:top-36 start-4 top-16'>
                     <h1 className='text-3xl w-64 text-cyan-500'>Shop for spring deals today!</h1>
                 </div>
             </div>
@@ -69,14 +69,14 @@ const DealsPage: MyPage = () => {
                         }}
                     />
                 </Tabs>
-                <TabPanel value='0'>
-                    <p>Trending items here</p>
+                <TabPanel value='0' className='py-0'>
+                    <h2 className='text-lg'>Trending</h2>
                 </TabPanel>
-                <TabPanel value='1'>
-                    <p>Spring favorites here</p>
+                <TabPanel value='1' className='py-0'>
+                    <h2 className='text-lg'>Spring favorites</h2>
                 </TabPanel>
-                <TabPanel value='2'>
-                    <p>Leaving soon items here</p>
+                <TabPanel value='2' className='py-0'>
+                    <h2 className='text-lg'>Leaving soon</h2>
                 </TabPanel>
             </TabContext>
         </div>
