@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React, { useContext, useState, useEffect } from 'react';
 import SearchBar from './Searchbar';
+import { useRouter } from 'next/router';
 import { StoreContext } from '../../src/utils/Store';
 import Cookies from 'js-cookie';
 
@@ -10,6 +11,7 @@ import {
     RectangleGroupIcon,
     TagIcon,
     ArrowLeftOnRectangleIcon,
+    ArrowRightOnRectangleIcon,
     Bars3Icon,
 } from '@heroicons/react/24/outline';
 import {
@@ -52,6 +54,8 @@ const Navbar = () => {
             window.removeEventListener('scroll', handleClose);
         };
     });
+
+    const router = useRouter();
 
     return (
         <div className='container navbar bg-base-100 mx-auto'>
@@ -109,8 +113,10 @@ const Navbar = () => {
                                 onClick={() => {
                                     Cookies.remove('userInfo');
                                     dispatch({ type: 'USER_LOGOUT' });
+                                    router.reload();
                                 }}
                             >
+                                <ArrowRightOnRectangleIcon className='h-6 w-6 mr-1' />
                                 Log Out
                             </Link>
                         </li>

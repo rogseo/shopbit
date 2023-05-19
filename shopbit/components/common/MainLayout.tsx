@@ -1,6 +1,7 @@
 // components/common/MainLayout.tsx
 import React, { PropsWithChildren } from 'react';
 import Navbar from './Navbar';
+import Footer from './Footer';
 const MainLayout = (props: PropsWithChildren) => {
     return (
         <>
@@ -9,6 +10,7 @@ const MainLayout = (props: PropsWithChildren) => {
             </header>
 
             <main>{ props.children }</main>
+            <Footer />
         </>
     );
 };

@@ -28,26 +28,38 @@ const CategoriesPage: MyPage = () => {
                 >
                     <SwiperSlide>
                         <div
-                            className='relative bg-cover bg-center bg-no-repeat h-48 rounded-lg'
-                            style={{ backgroundImage: 'url("/category-shoes.jpg")' }}
+                            className='relative bg-cover bg-center bg-no-repeat md:h-96 h-48 rounded-lg'
+                            style={{
+                                backgroundImage: 'url("/category-shoes.jpg")',
+                                backgroundPositionY: '60%',
+                            }}
                         />
                     </SwiperSlide>
                     <SwiperSlide>
                         <div
-                            className='relative bg-cover bg-center bg-no-repeat h-48 rounded-lg'
-                            style={{ backgroundImage: 'url("/category-clothes.jpg")' }}
+                            className='relative bg-cover bg-center bg-no-repeat md:h-96 h-48 rounded-lg'
+                            style={{
+                                backgroundImage: 'url("/category-clothes.jpg")',
+                                backgroundPositionY: '20%',
+                            }}
                         />
                     </SwiperSlide>
                     <SwiperSlide>
                         <div
-                            className='relative bg-cover bg-center bg-no-repeat h-48 rounded-lg'
-                            style={{ backgroundImage: 'url("/category-furniture.jpg")' }}
+                            className='relative bg-cover bg-center bg-no-repeat md:h-96 h-48 rounded-lg'
+                            style={{
+                                backgroundImage: 'url("/category-furniture.jpg")',
+                                backgroundPositionY: '40%',
+                            }}
                         />
                     </SwiperSlide>
                     <SwiperSlide>
                         <div
-                            className='relative bg-cover bg-center bg-no-repeat h-48 rounded-lg'
-                            style={{ backgroundImage: 'url("/category-electronics.jpg")' }}
+                            className='relative bg-cover bg-center bg-no-repeat md:h-96 h-48 rounded-lg'
+                            style={{
+                                backgroundImage: 'url("/category-electronics.jpg")',
+                                backgroundPositionY: '20%',
+                            }}
                         />
                     </SwiperSlide>
                 </Swiper>
@@ -116,20 +128,20 @@ const CategoriesPage: MyPage = () => {
                         }}
                     />
                 </Tabs>
-                <TabPanel value='0'>
-                    <p>Shoes items here</p>
+                <TabPanel value='0' className='py-0'>
+                    <h2 className='text-lg'>Shoes</h2>
                 </TabPanel>
-                <TabPanel value='1'>
-                    <p>Clothes favorites here</p>
+                <TabPanel value='1' className='py-0'>
+                    <h2 className='text-lg'>Clothes</h2>
                 </TabPanel>
-                <TabPanel value='2'>
-                    <p>Furniture items here</p>
+                <TabPanel value='2' className='py-0'>
+                    <h2 className='text-lg'>Furniture</h2>
                 </TabPanel>
-                <TabPanel value='3'>
-                    <p>Electronics items here</p>
+                <TabPanel value='3' className='py-0'>
+                    <h2 className='text-lg'>Electronics</h2>
                 </TabPanel>
-                <TabPanel value='4'>
-                    <p>Jewelry items here</p>
+                <TabPanel value='4' className='py-0'>
+                    <h2 className='text-lg'>Jewelry</h2>
                 </TabPanel>
             </TabContext>
         </div>
