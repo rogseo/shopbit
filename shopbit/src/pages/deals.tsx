@@ -30,8 +30,6 @@ const DealsPage: MyPage = () => {
                     allowScrollButtonsMobile
                 >
                     <Tab
-                        iconPosition='start'
-                        icon={<FireIcon className='h-6 w-6' />}
                         label={<p>Trending</p>}
                         value='0'
                         sx={{
@@ -43,8 +41,6 @@ const DealsPage: MyPage = () => {
                         }}
                     />
                     <Tab
-                        iconPosition='start'
-                        icon={<HeartIcon className='h-6 w-6' />}
                         label={<p>Spring favorites</p>}
                         value='1'
                         sx={{
@@ -56,8 +52,6 @@ const DealsPage: MyPage = () => {
                         }}
                     />
                     <Tab
-                        iconPosition='start'
-                        icon={<ClockIcon className='h-6 w-6' />}
                         label={<p>Leaving soon</p>}
                         value='2'
                         sx={{
